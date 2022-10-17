@@ -2,6 +2,7 @@ const wrapper = document.querySelector(".wrapper"),
   inputPart = wrapper.querySelector(".input-part"),
   infoTxt = inputPart.querySelector(".info-txt"),
   inputField = inputPart.querySelector("input"),
+  enterButton = inputPart.querySelector('.location-loader'),
   locationBtn = inputPart.querySelector("button"),
   weatherIcon = document.querySelector(".weather-part img"),
   arrowBack = wrapper.querySelector("header i");
@@ -13,6 +14,12 @@ inputField.addEventListener("keyup", (e) => {
     requestApi(inputField.value);
   }
 });
+
+enterButton.addEventListener("click", () =>{ 
+    requestApi(inputField.value)
+})
+
+
 
 locationBtn.addEventListener("click", () => {
   if (navigator.geolocation) {
@@ -59,7 +66,7 @@ function weatherDetails(info) {
     infoTxt.classList.replace("pending", "error");
   } else {
     const city = info.name,
-      pic = info.weather[0].icon,
+      // pic = info.weather[0].icon,
       country = info.sys.country,
       { description, id } = info.weather[0],
       { feels_like, humidity, temp } = info.main;
@@ -91,6 +98,8 @@ function weatherDetails(info) {
     wrapper.classList.add("active");
   }
 }
+
+
 
 function arrowback() {
   arrowBack.addEventListener("click", () => {

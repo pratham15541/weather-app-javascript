@@ -60,6 +60,9 @@ header i {
   display: none;
 }
 
+.wrapper .location-loader{
+  margin-top: 25px;
+}
 .input-part .info-txt {
   display: none;
   font-size: 17px;
