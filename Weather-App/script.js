@@ -20,14 +20,18 @@ enterButton.addEventListener("click", () =>{
 })
 
 
+setTimeout(() => {
+  
+  locationBtn.addEventListener("click", () => {
+    if (navigator.geolocation) {     
+      navigator.geolocation.getCurrentPosition(onSuccess, onError);
+      requestApi(inputField.value)
+    } else {
+      alert("Your browser not support geolocation api");
+    }
+  });
+}, 3000);
 
-locationBtn.addEventListener("click", () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
-  } else {
-    alert("Your browser not support geolocation api");
-  }
-});
 
 function onSuccess(position) {
   const { latitude, longitude } = position.coords;
